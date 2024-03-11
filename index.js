@@ -48,27 +48,30 @@ const employee = {
   taxes: 200,
   position: "front-end developer",
   level: "middle",
-  showInfo: () => {
-    return `${employee.level}, ${employee.position}, his salary equal to ${employee.salary}`;
+  showInfo: function () {
+    console.log(
+      `${this.level}, ${this.position}, his salary equal to ${this.salary}`
+    );
   },
 };
+
 for (let key in employee) {
   if (typeof employee[key] === "number") {
     employee[key] *= 2;
   }
 }
-console.log("Level second - employee:", employee.showInfo());
+
+employee.showInfo();
 
 const employee2 = {
   salary: 6500,
   taxes: 770,
   position: "back-end developer",
   level: "senior",
-  showInfo: () => {
-    return `${employee2.level}, ${employee2.position}, his salary equal to ${employee2.salary}`;
-  },
 };
-console.log("Level second - employee2:", employee2.showInfo());
+
+employee2.showInfo = employee.showInfo;
+employee2.showInfo();
 
 /// --------------------------------------------------- ///
 
@@ -184,7 +187,7 @@ const {
     {
       authors: [
         {
-          books: [{ title: firstBook }, {}, { title: thirdBook }],
+          books: [firstBook, , thirdBook],
         },
       ],
     },
